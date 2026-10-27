@@ -1,4 +1,6 @@
-body{
+body {
+  margin: 0;
+  padding: 0;
   text-decoration: none;
   text-align: center;
   background-color: #f8f9fa;
@@ -193,9 +195,9 @@ img{
   height: 100px;
 }
 div{
-  font-size: 20px;
+  
   font-weight: bold;
-  background-color: #f0f0f0;
+  
   
   width: 400px;
   margin: 20px auto;
@@ -205,7 +207,9 @@ h1,p{
   color: #333;
   font-weight: bold;
 }
-#btn{
+.btn, #btn {
+  display: inline-block;
+  text-decoration: none;
   background-color: #007bff;
   color: white;
   padding: 10px 20px;
@@ -214,13 +218,36 @@ h1,p{
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+}
+
+.btn:hover, #btn:hover {
+  background-color: #0056b3;
 }
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.student-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  width: auto;
+  margin: 24px;
+}
+.student-cards > main {
+  flex: 0 1 400px;
+  min-height: auto;
+  margin: 0;
+}
+.student-cards .id {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
 }

@@ -1,3 +1,6 @@
+import Header from './component/Header.jsx';
+import Footer from './component/Footer.jsx';
+import Navbar from './component/Navbar.jsx';
 import StudentCard from './component/studentcard.jsx';
 import ismailImg from './assets/ismail.jpeg';
 import './App.css';
@@ -26,21 +29,26 @@ const etudiant=[
 
 function App() {
   return (
-    <div className="caontainer">
-      {etudiant.map((etudiant) => (
-        <StudentCard
-          image={etudiant.image}
-          prenom={etudiant.prenom}
-          nom={etudiant.nom}
-          email={etudiant.email}
-          telephone={etudiant.telephone}
-          filiere={etudiant.filiere}
-          niveau={etudiant.niveau}
-          groupe={etudiant.groupe}
-          ville={etudiant.ville} />
-      ))}
-    </div>
+    <>
+      <Navbar />
+      <Header />
+      <div className="student-cards">
+        {etudiant.map((etudiant) => (
+          <StudentCard
+            key={etudiant.email}
+            image={etudiant.image}
+            prenom={etudiant.prenom}
+            nom={etudiant.nom}
+            email={etudiant.email}
+            telephone={etudiant.telephone}
+            filiere={etudiant.filiere}
+            niveau={etudiant.niveau}
+            groupe={etudiant.groupe}
+            ville={etudiant.ville} />
+        ))}
+      </div>
+      <Footer />
+    </>
   );
 }
 export default App;
-
