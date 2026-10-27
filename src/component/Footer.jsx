@@ -2,8 +2,8 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <footer className="footer">
-      <p>TP 2 Framework </p>
+    <footer id="contact" className="footer">
+      <p>TP 3 — Framework Web côté client</p>
     </footer>
   );
 }
