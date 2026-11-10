@@ -4,6 +4,7 @@ import Header from './component/Header.jsx';
 import Footer from './component/Footer.jsx';
 import Navbar from './component/Navbar.jsx';
 import StudentCard from './component/studentcard.jsx';
+import ForumEtudiant from './component/forum.jsx';
 import ismailImg from './assets/ismail.jpeg';
 import './App.css';
 
@@ -133,6 +134,7 @@ function App() {
         </section>
         <Counter />
       </main>
+      <ForumEtudiant />
       <Footer />
     </>
   );
