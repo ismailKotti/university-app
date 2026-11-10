@@ -39,26 +39,31 @@ function App() {
   const [etudiants, setEtudiants] = useState(etudiantsInitiaux);
   const [filiereSelectionnee, setFiliereSelectionnee] = useState('');
 
-  function ajouterEtudiant() {
+  function ajouterEtudiant(nouvelEtudiant) {
     setEtudiants((etudiantsActuels) => {
       const id = Math.max(
         Date.now(),
         ...etudiantsActuels.map((etudiant) => etudiant.id + 1),
       );
-      const nouvelEtudiant = {
-        id,
-        prenom: 'Nouvel étudiant',
-        nom: '',
-        email: `etudiant.${id}@university-app.test`,
-        telephone: 'À renseigner',
-        filiere: etudiantsActuels[0]?.filiere ?? 'À renseigner',
-        niveau: '2ème année',
-        groupe: 'À renseigner',
-        ville: 'À renseigner',
-        image: ismailImg,
-      };
+      const etudiant = nouvelEtudiant
+        ? {
+            ...nouvelEtudiant,
+            niveau: nouvelEtudiant.anneeEtude === '1'
+              ? '1ère année'
+              : `${nouvelEtudiant.anneeEtude}ème année`,
+          }
+        : {
+            prenom: 'Nouvel étudiant',
+            nom: '',
+            email: `etudiant.${id}@university-app.test`,
+            telephone: 'À renseigner',
+            filiere: etudiantsActuels[0]?.filiere ?? 'À renseigner',
+            niveau: '2ème année',
+            groupe: 'À renseigner',
+            ville: 'À renseigner',
+          };
 
-      return [...etudiantsActuels, nouvelEtudiant];
+      return [...etudiantsActuels, { ...etudiant, id, image: etudiant.image || ismailImg }];
     });
   }
 
@@ -128,13 +133,13 @@ function App() {
             <p className="empty-state">Aucun étudiant dans cette filière.</p>
           )}
 
-          <button className="primary-button" onClick={ajouterEtudiant}>
+          <button className="primary-button" onClick={() => ajouterEtudiant()}>
             Ajouter un étudiant
           </button>
         </section>
         <Counter />
       </main>
-      <ForumEtudiant />
+      <ForumEtudiant onAjouterEtudiant={ajouterEtudiant} />
       <Footer />
     </>
   );
